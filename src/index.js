@@ -10,7 +10,8 @@ module.exports = function multiply(first, second) {
 
             var Index = i + j;
             var tt = 0;
-            if (Index >= result.length) tt = 0;else tt = result[Index];
+            if (!result[Index]) result[Index] = 0;
+            tt = result[Index];
             result[Index] = a1[i] * a2[j] + tt;
 
             if (result[Index] > 9) {
