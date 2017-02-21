@@ -1,26 +1,66 @@
-
-
 module.exports = function multiply(first, second) {
-    function mult(strNum1, strNum2) {
+    var string = '', buf = 0, stringPrev, bufStr = 0, stringSum = '';
 
-        var a1 = strNum1.split("").reverse();
-        var a2 = strNum2.toString().split("").reverse();
-        var aResult = new Array;
+    for (let i = second.length - 1; i >= 0; i--) {
 
-        for (var iterNum1 = 0; iterNum1 < a1.length; iterNum1++) {
-            for (let iterNum2 = 0; iterNum2 < a2.length; iterNum2++) {
-                var idxIter = iterNum1 + iterNum2;
-                aResult[idxIter] = a1[iterNum1] * a2[iterNum2] + ( idxIter >= aResult.length ? 0 : aResult[idxIter] );
+        for (let j = first.length - 1; j >= 0; j--) {
 
-                if (aResult[idxIter] > 9) {
-                    aResult[idxIter + 1] = Math.floor(aResult[idxIter] / 10) + ( idxIter + 1 >= aResult.length ? 0 : aResult[idxIter + 1] );
-                    aResult[idxIter] -= Math.floor(aResult[idxIter] / 10) * 10;
-                }
+            var temp = first[j]*second[i];
+            if (temp + buf > 9) {
+                string = (temp + buf) % 10 + string;
+                buf = Math.floor((temp + buf) / 10);
+            } else {
+                string = temp + buf + string;
+                buf = 0;
             }
+
         }
-        return aResult.reverse().join("");
+
+        if (buf !== 0) {
+            string = buf + string;
+            buf = 0;
+        }
+
+
+        if (i !== second.length - 1) {
+            string = string + new Array(second.length - i).join('0')
+
+            var l = stringPrev.length - 1;
+            for (let k = string.length - 1; k >= 0; k--) {
+                if (l < 0 ) {
+                    l = 0;
+                    stringPrev = '0';
+                }
+
+                var tempStr = (+string[k])+(+stringPrev[l])+bufStr;
+                if (tempStr > 9) {
+                    stringSum = tempStr % 10 + stringSum;
+                    bufStr = Math.floor(tempStr / 10);
+                } else {
+                    stringSum = tempStr + stringSum;
+                    bufStr = 0;
+                }
+                l--;
+            }
+
+
+            if (bufStr !== 0) {
+                stringSum = bufStr + stringSum;
+                bufStr = 0;
+            }
+
+
+            stringPrev = stringSum;
+            stringSum = '';
+            string = '';
+            ////////////////////// on 5
+            console.log(stringPrev);
+
+        } else {
+            stringPrev = string;
+            string = '';
+        }
     }
-    var result = (((+first) * (+second)));
-    if (Number.MAX_SAFE_INTEGER > result) return result.toString();
-    return mult(first, second);
+
+    return stringPrev;
 }
