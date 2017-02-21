@@ -1,7 +1,7 @@
 module.exports = function multiply(first, second) {
      first = first.split('').reverse();
      second = second.split('').reverse();
-    var result = [];
+    let result = [];
 
     for (var i = 0; i < first.length; i++) {
         for (var j = 0; j < second.length; j++) {
