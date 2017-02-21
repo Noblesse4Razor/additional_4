@@ -15,4 +15,4 @@ module.exports = function multiply(first, second) {
         }
     }
     return aResult.reverse().join("");
-}
+};
