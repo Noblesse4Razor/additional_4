@@ -1,8 +1,8 @@
 "use strict";
 
 module.exports = function multiply(first, second) {
-    var a1 = first.split("").reverse();
-    var a2 = second.toString().split("").reverse();
+    var a1 = first.split('').reverse();
+    var a2 = second.split('').reverse();
     var result = [];
 
     for (var i = 0; i < a1.length; i++) {
