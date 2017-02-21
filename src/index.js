@@ -1,5 +1,3 @@
-"use strict";
-
 module.exports = function multiply(first, second) {
     var a1 = first.split('').reverse();
     var a2 = second.split('').reverse();
@@ -13,13 +11,15 @@ module.exports = function multiply(first, second) {
 
             result[Index] += a1[i] * a2[j] ;
 
-            if (result[Index] > 9) {
-                var t = 0;
-                if (Index + 1 >= result.length) t = 0;else {
-                    t = result[Index + 1];
+            for (var k = 0; k < result.length; k++) {
+                if (result[k] >= 10) {
+                    if (!result[k + 1]) {
+                        result[k + 1] = 0;
+                    }
+
+                    result[k + 1] += Number.parseInt(result[k] / 10);
+                    result[k] %= 10;
                 }
-                result[Index + 1] = ((result[Index] / 10)| 0) + t;
-                result[Index] -= ((result[Index] / 10)| 0) * 10;
             }
         }
     }
