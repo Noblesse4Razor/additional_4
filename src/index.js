@@ -18,8 +18,8 @@ module.exports = function multiply(first, second) {
                 if (idxIter + 1 >= aResult.length) t = 0;else {
                     t = aResult[idxIter + 1];
                 }
-                aResult[idxIter + 1] = Math.floor(aResult[idxIter] / 10) + t;
-                aResult[idxIter] -= Math.floor(aResult[idxIter] / 10) * 10;
+                aResult[idxIter + 1] = (aResult[idxIter] / 10)>>0 + t;
+                aResult[idxIter] -= (aResult[idxIter] / 10)>>0 * 10;
             }
         }
     }
