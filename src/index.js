@@ -1,27 +1,25 @@
-module.exports = function multiply(first, second) {
-     first = first.split('').reverse();
-     second = second.split('').reverse();
-    let result = [];
+function mult(strNum1, strNum2) {
 
-    for (var i = 0; i < first.length; i++) {
-        for (var j = 0; j < second.length; j++) {
+    var a1 = strNum1.split('').reverse();
+    var a2 = strNum2.toString().split('').reverse();
+    var aResult = new Array;
 
+    for (var iterNum1 = 0; iterNum1 < a1.length; iterNum1++) {
+        for (let iterNum2 = 0; iterNum2 < a2.length; iterNum2++) {
+            var idxIter = iterNum1 + iterNum2;
+            aResult[idxIter] = a1[iterNum1] * a2[iterNum2] + ( idxIter >= aResult.length ? 0 : aResult[idxIter] );
 
-            if (!result[i+j]) result[i+j] = 0;
-
-            result[i+j] += first[i] * second[j] ;
-
-            for (var k = 0; k < result.length; k++) {
-                if (result[k] >= 10) {
-                    if (!result[k + 1]) {
-                        result[k + 1] = 0;
-                    }
-
-                    result[k + 1] += Number.parseInt(result[k] / 10);
-                    result[k] %= 10;
-                }
+            if (aResult[idxIter] > 9) {
+                aResult[idxIter + 1] = Math.floor(aResult[idxIter] / 10) + ( idxIter + 1 >= aResult.length ? 0 : aResult[idxIter + 1] );
+                aResult[idxIter] -= Math.floor(aResult[idxIter] / 10) * 10;
             }
         }
     }
-    return (result.reverse().join(''));
-};
+    return aResult.reverse().join('');
+}
+
+module.exports = function multiply(first, second) {
+    var result = (((+first) * (+second)));
+    if (Number.MAX_SAFE_INTEGER > result) return result.toFixed();
+    return mult(first, second);
+}
