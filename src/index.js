@@ -8,18 +8,18 @@ module.exports = function multiply(first, second) {
     for (var i = 0; i < a1.length; i++) {
         for (var j = 0; j < a2.length; j++) {
 
-            var idxIter = i + j;
+            var Index = i + j;
             var tt = 0;
-            if (idxIter >= result.length) tt = 0;else tt = result[idxIter];
-            result[idxIter] = a1[i] * a2[j] + (idxIter >= result.length ? 0 : result[idxIter]);
+            if (Index >= result.length) tt = 0;else tt = result[Index];
+            result[Index] = a1[i] * a2[j] + (Index >= result.length ? 0 : result[Index]);
 
-            if (result[idxIter] > 9) {
+            if (result[Index] > 9) {
                 var t = 0;
-                if (idxIter + 1 >= result.length) t = 0;else {
-                    t = result[idxIter + 1];
+                if (Index + 1 >= result.length) t = 0;else {
+                    t = result[Index + 1];
                 }
-                result[idxIter + 1] = ((result[idxIter] / 10)| 0) + t;
-                result[idxIter] -= ((result[idxIter] / 10)| 0) * 10;
+                result[Index + 1] = ((result[Index] / 10)| 0) + t;
+                result[Index] -= ((result[Index] / 10)| 0) * 10;
             }
         }
     }
