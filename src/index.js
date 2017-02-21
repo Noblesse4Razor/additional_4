@@ -11,7 +11,7 @@ module.exports = function multiply(first, second) {
             var Index = i + j;
             var tt = 0;
             if (Index >= result.length) tt = 0;else tt = result[Index];
-            result[Index] = a1[i] * a2[j] + (Index >= result.length ? 0 : result[Index]);
+            result[Index] = a1[i] * a2[j] + tt;
 
             if (result[Index] > 9) {
                 var t = 0;
