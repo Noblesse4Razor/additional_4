@@ -23,5 +23,5 @@ module.exports = function multiply(first, second) {
             }
         }
     }
-    return aResult.reverse().join("");
+    return (aResult.reverse().join(""));
 };
