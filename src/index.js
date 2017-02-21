@@ -1,29 +1,27 @@
+"use strict";
+
 module.exports = function multiply(first, second) {
-    first = first.split('').reverse();
-    second = second.split('').reverse();
+    var a1 = first.split('').reverse();
+    var a2 = second.split('').reverse();
+    var result = [];
 
-    let product = [];
+    for (var i = 0; i < a1.length; i++) {
+        for (var j = 0; j < a2.length; j++) {
 
-    for (var i = 0; i < first.length; i++) {
-        for (var j = 0; j < second.length; j++) {
-            if (!product[i + j]) {
-                product[i + j] = 0;
+            var Index = i + j;
+            if (!result[Index]) result[Index] = 0;
+
+            result[Index] += a1[i] * a2[j] ;
+
+            if (result[Index] > 9) {
+                var t = 0;
+                if (Index + 1 >= result.length) t = 0;else {
+                    t = result[Index + 1];
+                }
+                result[Index + 1] = ((result[Index] / 10)| 0) + t;
+                result[Index] -= ((result[Index] / 10)| 0) * 10;
             }
-
-            product[i + j] += first[i] * second[j];
         }
     }
-
-    for (var i = 0; i < product.length; i++) {
-        if (product[i] >= 10) {
-            if (!product[i + 1]) {
-                product[i + 1] = 0;
-            }
-
-            product[i + 1] += Number.parseInt(product[i] / 10);
-            product[i] %= 10;
-        }
-    }
-
-    return product.reverse().join('');
-}
+    return (result.reverse().join(""));
+};
