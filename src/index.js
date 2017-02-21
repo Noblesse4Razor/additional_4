@@ -1,6 +1,6 @@
 
 module.exports = function multiply(first, second) {
-
-    return result.toFixed();
+    var result = (((+first) * (+second)));
+  return result.toString();
 
 }
