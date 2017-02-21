@@ -2,7 +2,7 @@ function mult(strNum1, strNum2) {
 
     var a1 = strNum1.split('').reverse();
     var a2 = strNum2.toString().split('').reverse();
-    var aResult = new Array;
+    var aResult = [];
 
     for (var iterNum1 = 0; iterNum1 < a1.length; iterNum1++) {
         for (let iterNum2 = 0; iterNum2 < a2.length; iterNum2++) {
@@ -22,4 +22,4 @@ module.exports = function multiply(first, second) {
     var result = (((+first) * (+second)));
     if (Number.MAX_SAFE_INTEGER > result) return result.toFixed();
     return mult(first, second);
-}
+};
