@@ -1,9 +1,9 @@
+module.exports = function multiply(first, second) {
 
-function mult(strNum1, strNum2) {
 
-    var a1 = strNum1.split("").reverse();
-    var a2 = strNum2.toString().split("").reverse();
-    var aResult = new Array;
+    var a1 = first.split("").reverse();
+    var a2 = second.toString().split("").reverse();
+    var aResult = [];
 
     for (let iterNum1 = 0; iterNum1 < a1.length; iterNum1++) {
         for (let iterNum2 = 0; iterNum2 < a2.length; iterNum2++) {
@@ -16,10 +16,5 @@ function mult(strNum1, strNum2) {
             }
         }
     }
-    return aResult.reverse().join("");
-}
-module.exports = function multiply(first, second) {
-
-
-    return mult(first, second);
+    return aResult.reverse().join("");;
 }
